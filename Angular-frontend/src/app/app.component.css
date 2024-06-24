@@ -1,0 +1,25 @@
+.spacer {
+  flex: 1 1 auto;
+}
+
+.navbar{
+  background-color: #f0f0f0;
+}
+
+.mat-footer {
+  background-color: #f0f0f0;
+  text-align: center !important; 
+  padding: 10px;
+  color: black !important;
+  color: white;
+  bottom: 0;
+  width: 100%;
+  font-size: small;
+  display: flex;
+  justify-content: center;
+}
+
+.footer-text {
+  display: block; 
+  text-align: center !important;
+}

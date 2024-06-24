@@ -1,0 +1,51 @@
+<div class="container">
+    <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+        <mat-card class="card">
+            <h1 id="signup-text">Sign Up</h1>
+      <mat-form-field class="form-field" appearance="fill">
+        <mat-label>Name</mat-label>
+        <input matInput formControlName="name" required />
+        <mat-error *ngIf="signupForm.get('name')!.hasError('required')"
+          >Name is required</mat-error
+        >
+      </mat-form-field>
+
+      <mat-form-field class="form-field" appearance="fill">
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="email" type="email" required />
+        <mat-error *ngIf="signupForm.get('email')!.hasError('required')"
+          >Email is required</mat-error
+        >
+        <mat-error *ngIf="signupForm.get('email')!.hasError('email')"
+          >Please enter a valid email address</mat-error
+        >
+      </mat-form-field>
+
+      <mat-form-field class="form-field" appearance="fill">
+        <mat-label>Password</mat-label>
+        <input matInput formControlName="password" type="password" required />
+        <mat-error *ngIf="signupForm.get('password')!.hasError('required')"
+          >Password is required</mat-error
+        >
+        <mat-error *ngIf="signupForm.get('password')!.hasError('minlength')"
+          >Password must be at least 6 characters long</mat-error
+        >
+      </mat-form-field>
+
+      <button
+      class="signup-btn"
+        mat-raised-button
+        color="primary"
+        type="submit"
+        [disabled]="signupForm.invalid"
+      >
+        Signup
+      </button>
+      <p *ngIf="errorMessage" class="error-message">{{ errorMessage }}</p>
+
+      <div class="login-text">
+        Already have an account ? <a routerLink="/login">Login</a> here.
+      </div>
+    </mat-card>
+    </form>
+</div>

@@ -1,0 +1,25 @@
+<mat-toolbar color="primary" class="navbar">
+  <span>My E-Commerce Site</span>
+  <span class="spacer"></span>
+  <a mat-button routerLink="/home" routerLinkActive="active-link">Home</a>
+  <a mat-button routerLink="/products" routerLinkActive="active-link">Products</a>
+  <a mat-button routerLink="/cart" routerLinkActive="active-link">Cart</a>
+  <a mat-button routerLink="/contact" routerLinkActive="active-link">Contact</a>
+  <!-- Conditionally show Login/Signup or Logout -->
+  <ng-container *ngIf="isLoggedIn(); else loginLinks">
+    <a mat-button routerLink="/logout" (click)="logout()">Logout</a>
+  </ng-container>
+  <ng-template #loginLinks>
+    <a mat-button routerLink="/login" routerLinkActive="active-link">Login/Signup</a>
+  </ng-template>
+</mat-toolbar>
+
+<main class="main-content">
+  <router-outlet></router-outlet>
+</main>
+
+<mat-toolbar color="primary" class="mat-footer">
+  <div class="footer-text">
+    © 2024 My E-Commerce Site. All Rights Reserved.
+  </div>
+</mat-toolbar>

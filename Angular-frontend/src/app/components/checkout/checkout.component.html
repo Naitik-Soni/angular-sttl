@@ -1,0 +1,59 @@
+<div class="container">
+  <form [formGroup]="checkoutForm" (ngSubmit)="onSubmit()">
+    <mat-card class="card">
+      <mat-card-title class="card-title">Shipping Information</mat-card-title>
+      <mat-card-content class="input-fields">
+        <mat-form-field appearance="fill">
+          <mat-label>Name</mat-label>
+          <input matInput formControlName="name" required />
+          <mat-error *ngIf="checkoutForm.get('name')!.hasError('required')">
+            Name is required
+          </mat-error>
+        </mat-form-field>
+  
+        <mat-form-field appearance="fill">
+          <mat-label>Address</mat-label>
+          <input matInput formControlName="address" required />
+          <mat-error *ngIf="checkoutForm.get('address')!.hasError('required')">
+            Address is required
+          </mat-error>
+        </mat-form-field>
+  
+        <mat-form-field appearance="fill">
+          <mat-label>Payment Details</mat-label>
+          <input matInput formControlName="paymentDetails" required />
+          <mat-error *ngIf="checkoutForm.get('paymentDetails')!.hasError('required')">
+            Payment details are required
+          </mat-error>
+        </mat-form-field>
+      </mat-card-content>
+    </mat-card>
+  
+    <mat-card class="card">
+      <mat-card-title class="card-title">Order Summary</mat-card-title>
+      <mat-card-content class="card-content">
+        <div *ngFor="let item of cartItems$ | async">
+          <p>{{ item.product.name }} - {{ item.quantity }} x {{ item.product.price | currency }}</p>
+        </div>
+        <hr/>
+        <p id="total-text">Total: {{ getTotal() | currency }}</p>
+      </mat-card-content>
+    </mat-card>
+  
+    <button mat-raised-button color="primary" type="submit" [disabled]="checkoutForm.invalid" >
+      Place Order
+    </button>
+  </form>
+  
+  <ng-container *ngIf="showConfirmation">
+    <ng-template #confirmation>
+      <mat-card>
+        <mat-card-title>Order Confirmation</mat-card-title>
+        <mat-card-content>
+          <p>Thank you for your order! Your order has been placed successfully.</p>
+        </mat-card-content>
+      </mat-card>
+    </ng-template>
+  </ng-container>
+  
+</div>

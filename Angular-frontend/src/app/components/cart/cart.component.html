@@ -1,0 +1,57 @@
+<div class="container">
+  <div class="cart-item-container" *ngFor="let item of cartItems$ | async">
+    <mat-card class="cart-item-card">
+      <mat-card-header>
+        <mat-card-title>{{ item.product.name }}</mat-card-title>
+      </mat-card-header>
+      <img
+        mat-card-image
+        class="cartImg"
+        [src]="item.product.image"
+        alt="{{ item.product.name }}"
+      />
+      <mat-card-content>
+        <p>Price: {{ item.product.price | currency }}</p>
+
+        <mat-form-field>
+          <mat-label>qty.</mat-label>
+
+          <mat-select
+            placeholder="Select Level of Education"
+            name="education_level"
+            (selectionChange)="updateQuantity(item,  $event.value)"
+            [(ngModel)]="item.quantity"
+          >
+            <mat-option
+              *ngFor="
+                let quantity of [].constructor(item.product.quantity);
+                let c = index
+              "
+              [value]="c + 1"
+              >{{ c + 1 }}</mat-option
+            >
+          </mat-select>
+        </mat-form-field>
+      </mat-card-content>
+      <!-- total price -->
+      <mat-card-footer>
+        <p class="total-price">Total : {{ (item.product.price*item.quantity)| currency }}</p>
+      </mat-card-footer>
+      <mat-card-actions>
+        <button
+          mat-raised-button
+          class="remove-btn"
+          color="warn"
+          (click)="removeFromCart(item.product._id)"
+          style="background-color: #f0f0f0;"
+        >
+          Remove
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+  <!-- checkout  -->
+</div>
+<button class="checkout-btn" mat-raised-button color="primary" (click)="goToCheckout()">
+  Proceed to Buy 
+</button>

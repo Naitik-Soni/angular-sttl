@@ -1,0 +1,15 @@
+<div class="products">
+  <mat-card class="product-card" *ngFor="let product of products" (click)="viewProductDetail(product._id)">
+    <img class="product-img" mat-card-image [src]="product.image" alt="{{ product.name }}" />
+    <mat-card-header>
+      <mat-card-title>{{ product.name }}</mat-card-title>
+      <mat-card-subtitle>Price: {{ product.price | currency }}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <p>{{ product.description }}</p>
+    </mat-card-content>
+    <mat-card-actions class="addToCartBtnContainer">
+      <button class="btnAddToCart" mat-raised-button color="primary" (click)="addToCart(product); $event.stopPropagation();">Add to Cart</button>
+    </mat-card-actions>
+  </mat-card>
+</div>

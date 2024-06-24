@@ -1,0 +1,51 @@
+<section class="product-detail">
+  <div class="container">
+    <div class="product-wrapper">
+      <img
+        alt="ecommerce"
+        class="product-image"
+        [src]="product?.image"
+        srcset="{{ product?.image }} 400w, {{ product?.image }} 800w, {{ product?.image }} 1200w, {{ product?.image }} 1600w"
+        sizes="(max-width: 600px) 100vw, (max-width: 960px) 50vw, 25vw"
+      />
+
+      <div class="product-details">
+        <mat-card>
+          <mat-card-header>
+            <mat-card-title>{{ product?.name }}</mat-card-title>
+            <mat-card-subtitle class="product-price">Price: {{ product?.price | currency }}</mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-content>
+            <div class="product-description">
+              <p>Product Detail : {{ product?.description }}</p>
+            </div>
+
+            <!-- <div class="product-options">
+              <span>Color</span>
+              <mat-button-toggle-group name="color" aria-label="Color">
+                <mat-button-toggle value="color1"></mat-button-toggle>
+                <mat-button-toggle value="color2" class="bg-gray-700"></mat-button-toggle>
+                <mat-button-toggle value="color3" class="bg-indigo-500"></mat-button-toggle>
+              </mat-button-toggle-group>
+            </div> -->
+            <!-- <div class="product-options">
+              <span>Size</span>
+              <mat-form-field>
+                <mat-label>Size</mat-label>
+                <mat-select>
+                  <mat-option value="SM">SM</mat-option>
+                  <mat-option value="M">M</mat-option>
+                  <mat-option value="L">L</mat-option>
+                  <mat-option value="XL">XL</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div> -->
+          </mat-card-content>
+          <mat-card-actions>
+            <button mat-raised-button class="addtocart-btn" color="primary" (click)="addToCart(product)">Add To Cart</button>
+          </mat-card-actions>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+</section>

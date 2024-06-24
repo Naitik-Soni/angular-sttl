@@ -1,0 +1,24 @@
+<mat-card class="contact-card">
+  <h1>Contact Us</h1>
+  <p>If you have any questions, please reach out to us.</p>
+  <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Name</mat-label>
+      <input matInput id="name" formControlName="name" placeholder="Enter Name">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Email</mat-label>
+      <input matInput type="email" id="email" formControlName="email" placeholder="Enter Email">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Message</mat-label>
+      <textarea matInput id="message" formControlName="message" placeholder="Enter Message"></textarea>
+    </mat-form-field>
+
+    <div class="button-container">
+      <button mat-raised-button color="primary" type="submit" (click)="openSnackBar()" aria-label="Show an example snack-bar">Submit</button>
+    </div>
+  </form>
+</mat-card>
